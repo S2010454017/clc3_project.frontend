@@ -1,0 +1,26 @@
+﻿@model List<CLC3_Project.Model.Book>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All Books</h1>
+</div>
+
+<div>
+    <table>
+      <tr>
+        <th>@nameof(CLC3_Project.Model.Book.ISBN)</th>
+        <th>@nameof(CLC3_Project.Model.Book.BookName)</th>
+        <th></th>
+      </tr>
+      @foreach (var item in Model)
+      {
+        <tr>
+        <td>@item.ISBN</td>
+        <td>@item.BookName</td>
+        <td><a asp-controller="Books" asp-action="Details" asp-route-isbn="@item.ISBN">Details</a></td>
+      </tr>
+      }
+    </table>
+</div>

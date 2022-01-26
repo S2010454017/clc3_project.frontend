@@ -1,0 +1,29 @@
+﻿@using CLC3_Project.Model
+@model (string, List<ReadingList>)
+
+<h1>Reading Lists for @Model.Item1</h1>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Number of Books</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Books.Count</td>
+                <td><a asp-controller="ReadList" asp-action="Edit" 
+                       asp-route-user="@Model.Item1"
+                       asp-route-name="@item.Name">Edit</a></td>
+                <td><a asp-controller="ReadList" asp-action="Remove" 
+                    asp-route-name="@item.Name"
+                    asp-route-user="@Model.Item1">Remove</a></td>
+            </tr>
+        }
+    </table>
+</div>
+<a asp-controller="ReadList" asp-action="Create" asp-route-user="@Model.Item1">New List</a>

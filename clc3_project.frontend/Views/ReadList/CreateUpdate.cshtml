@@ -1,0 +1,39 @@
+﻿@using CLC3_Project.Model
+@model (string, ReadingList, List<Book>)
+@{
+    bool isUpdate = string.IsNullOrEmpty(@Model.Item2.Id);
+    string methodName = isUpdate ? "Create" : "Update";
+}
+
+@if (!isUpdate)
+{
+    <h1>Update @Model.Item2.Name</h1>
+}
+else
+{
+   <h1>Create new List</h1>
+}
+
+<div>
+
+    <form asp-controller="ReadList" asp-action="@methodName" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="@Model.Item2.Name">
+        
+        <label for="owner">Owner</label>
+        <input type="text" id="owner" name="owner" value="@Model.Item1" readonly>
+
+        <ul>
+            @foreach (var item in Model.Item3)
+            {
+                <li>
+                    <label for="@item.ISBN">@item.BookName</label>
+                    <input type="checkbox" name="books" id="@item.ISBN"value="@item.ISBN">
+                </li>
+            }
+        </ul>
+        <input type="hidden" id="oldName" name="oldName" value="@Model.Item2.Name"/>
+        <button type="submit">Send</button>
+    </form>
+</div>
+

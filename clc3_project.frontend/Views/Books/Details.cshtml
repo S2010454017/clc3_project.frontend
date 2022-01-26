@@ -1,0 +1,45 @@
+﻿@model CLC3_Project.Model.Book
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container">
+    <div class="Title">
+        <h1>Details for @Model.BookName</h1>
+    </div>
+    <div class="Image">
+        <img src="@Model.Cover" />
+    </div>
+    <div class="Info">
+        <div>
+            <b>@nameof(Model.ISBN)</b>
+            <p>@Model.ISBN</p>
+        </div>
+        <div>
+            <b>@nameof(Model.BookName)</b>
+            <p>@Model.BookName</p>
+        </div>
+        <div>
+            <b>@nameof(Model.Category)</b>
+            <ul>
+                @foreach (var item in Model.Category)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+        <div>
+            <b>@nameof(Model.Authors)</b>
+            <ul>
+                @foreach (var item in Model.Authors)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,19 @@
+﻿@model List<string>
+
+<h1>Select User</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+           <td><a asp-controller="ReadList" asp-action="ListForUser" asp-route-user="@item">Reading Lists</a></td>
+        </tr>
+    }
+   
+</table>
