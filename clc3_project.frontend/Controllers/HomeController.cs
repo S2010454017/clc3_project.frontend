@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace CLC3_Project.Frontend.Controllers
 {
+    /// <summary>
+    /// Manages the Homepage
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CLC3_Project.Frontend.Controllers
 {
+    /// <summary>
+    /// Manages all Request dealing with the book side of things.
+    /// </summary>
     [Route("/[controller]")]
     public class BooksController : Controller
     {
@@ -14,6 +17,9 @@ namespace CLC3_Project.Frontend.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// Returns a view containing all books in a list
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult> IndexAsync()
         {
@@ -21,6 +27,10 @@ namespace CLC3_Project.Frontend.Controllers
             return View(await service.getAllBooksAsync());
         }
        
+        /// <summary>
+        /// Returns a view which contains the detailed information
+        /// </summary>
+        /// <param name="isbn">isbn of the selected book</param>
         [HttpGet]
         [Route("{isbn}")]
         public async Task<IActionResult> Details(string isbn)
